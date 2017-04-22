@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Cadastro de Contatos</h1>
+        <h:form id="cadastroForm">
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText value="#{bean.pessoa.nome}" size="35" id="nome" required="true" />
+                <p:outputLabel value="E-mail" for="email"/>
+                <p:inputText value="#{bean.pessoa.email}" size="35" id="email"/>
+                <p:outputLabel value="Telefone" for="telefone"/>
+                <p:inputMask mask="(99) 99999-9999" value="#{bean.pessoa.telefone}" id="telefone"/>
+                <p:outputLabel value="Nascimento" for="nascimento"/>
+                <p:inputMask mask="99/99/9999" value="#{bean.pessoa.dtNasc}" id="nascimento"/>
+                <p:outputLabel />
+                <p:commandButton value="Salvar" action="#{bean.adicionar()}" update="@form "/>
+                                
+            </h:panelGrid>
+            
+            <p:dataTable var="pes" value="#{bean.lista}" 
+            emptyMessage="Nenhum registro cadastrado">            
+                <p:column headerText="Nome">
+                    <h:outputText value="#{pes.nome}"/>
+                </p:column>
+                    
+                <p:column headerText="E-mail">
+                    <h:outputText value="#{pes.email}"/>
+                </p:column>
+                    
+                <p:column headerText="Telefone">
+                    <h:outputText value="#{pes.telefone}"/>
+                </p:column>
+                    
+                <p:column headerText="Nascimento">
+                    <h:outputText value="#{pes.dtNasc}"/>
+                </p:column>
+            </p:dataTable>
+                
+            
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
